@@ -12,7 +12,7 @@ import {
   } from 'react-bootstrap';
 
 
-// sumulate getting products from DataBase
+// simulate getting products from DataBase
 const products = [
     { name: "Apples", country: "Italy", cost: 3, instock: 10 },
     { name: "Oranges", country: "Spain", cost: 4, instock: 3 },
@@ -22,13 +22,13 @@ const products = [
   
   
   //=========Cart=============
-  const Cart = (props) => {
-    //const { Card, Accordion, Button } = ReactBootstrap;
-    let data = props.location.data ? props.location.data : products;
-    console.log(`data:${JSON.stringify(data)}`);
+  // const Cart = (props) => {
+  //   //const { Card, Accordion, Button } = ReactBootstrap;
+  //   let data = props.location.data ? props.location.data : products;
+  //   console.log(`data:${JSON.stringify(data)}`);
   
-    return <Accordion defaultActiveKey="0">{list}</Accordion>;
-  };
+  //   return <Accordion defaultActiveKey="0">{list}</Accordion>;
+  // };
   
   const useDataApi = (initialUrl, initialData) => {
     const { useState, useEffect, useReducer } = React;
@@ -111,13 +111,13 @@ const products = [
     console.log(`Rendering Products ${JSON.stringify(data)}`);
     // Fetch Data
 
-    // const Cart = (props) => {
-    //   //const { Card, Accordion, Button } = ReactBootstrap;
-    //   let data = props.location.data ? props.location.data : products;
-    //   console.log(`data:${JSON.stringify(data)}`);
+    const Cart = (props) => {
+      //const { Card, Accordion, Button } = ReactBootstrap;
+      let data = props.location.data ? props.location.data : products;
+      console.log(`data:${JSON.stringify(data)}`);
     
-    //   return <Accordion defaultActiveKey="0">{list}</Accordion>;
-    // };
+      return <Accordion defaultActiveKey="0">{list}</Accordion>;
+    };
   
     const addToCart = (e) => {
       let name = e.target.name;
