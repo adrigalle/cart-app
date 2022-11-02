@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactBootstrap from 'react-bootstrap';
+import DeleteIcon from '@material-ui/icons/Delete';
 import axios from 'axios';
 import {
     Card,
@@ -11,7 +12,7 @@ import {
     Image
   } from 'react-bootstrap';
 
-
+ 
 // simulate getting products from DataBase
 const products = [
     { name: "Apples", country: "Italy", cost: 3, instock: 10 },
@@ -23,11 +24,11 @@ const products = [
   
   //=========Cart=============
   // const Cart = (props) => {
-  //   //const { Card, Accordion, Button } = ReactBootstrap;
+  //   //const Accordion = ReactBootstrap;
   //   let data = props.location.data ? props.location.data : products;
-  //   console.log(`data:${JSON.stringify(data)}`);
+  //   console.log(`!!!!!!!!!data:${JSON.stringify(data)}!!!!!!!!`);
   
-  //   return <Accordion defaultActiveKey="0">{list}</Accordion>;
+  //   return <Accordion defaultActiveKey="0">{data}</Accordion>;
   // };
   
   const useDataApi = (initialUrl, initialData) => {
@@ -62,7 +63,6 @@ const products = [
         didCancel = true;
       };
     }, [url]);
-    console.log('test!!!!: ', "state",state, "url",url);
     return [state, setUrl];
   };
   const dataFetchReducer = (state, action) => {
@@ -114,9 +114,9 @@ const products = [
     const Cart = (props) => {
       //const { Card, Accordion, Button } = ReactBootstrap;
       let data = props.location.data ? props.location.data : products;
-      console.log(`data:${JSON.stringify(data)}`);
+      console.log(`!!!!!!data:${JSON.stringify(data)}!!!!!!!!`);
     
-      return <Accordion defaultActiveKey="0">{list}</Accordion>;
+      return <Accordion defaultActiveKey="0">{data}</Accordion>;
     };
   
     const addToCart = (e) => {
@@ -157,23 +157,12 @@ const products = [
         </li>
       );
     });
-  
     let cartList = cart.map((item, index) => {
       return (
         <Card key={index}>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey={1 + index}>
-              {item.name}
-            </Accordion.Toggle>
-          </Card.Header>
-          <Accordion.Collapse
-            onClick={() => deleteCartItem(index)}
-            eventKey={1 + index}
-          >
-            <Card.Body>
-              $ {item.cost} from {item.country}
-            </Card.Body>
-          </Accordion.Collapse>
+          <Button className='btn-cart-item'>
+            {item.name} <DeleteIcon className='left-auto' onClick={() => deleteCartItem(index)}/>
+          </Button>
         </Card>
       );
     });
@@ -253,3 +242,19 @@ const products = [
 export default Products;
 
 
+
+
+{/* <Card.Header>
+<Accordion.Toggle as={Button} variant="link" eventKey={1 + index}>
+  {item.name}
+</Accordion.Toggle>
+</Card.Header>
+<Accordion.Collapse
+onClick={() => deleteCartItem(index)}
+eventKey={1 + index}
+> 
+
+            <Card.Body>
+              $ {item.cost} from {item.country}
+            </Card.Body>
+          </Accordion.Collapse>*/}

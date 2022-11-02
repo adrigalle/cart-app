@@ -11,6 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+Button {
+  border-color: none;
+}
 
 .app-header {
   background-image: linear-gradient(to right, #1b7a92, #2193b0 , #6dd5ed);
@@ -19,6 +22,7 @@ code {
 }
 
 .btn-cute{
+  text-align: left;
   color: white;
   background-image: linear-gradient(#1b7a92 60%, #2193b0);
   border: none;
@@ -46,4 +50,16 @@ code {
 }
 .btn-restock:hover {
   background-image: linear-gradient(#19A186 70%, #2193b0);
+}
+.left-auto {
+  margin-left: auto;
+}
+.left-auto:hover {
+  background-color: #1b7a92;
+}
+.btn-cart-item {
+  background-image: linear-gradient(#19A186 30%, #2193b0);
+  border: none;
+  text-align: left;
+  display: flex;
 }
